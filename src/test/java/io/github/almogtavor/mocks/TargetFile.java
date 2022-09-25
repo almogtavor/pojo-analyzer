@@ -6,42 +6,30 @@ import java.util.Date;
 
 @DetailedPojo
 public class TargetFile {
-    private String itemId;
-    private String parentId;
-    private Date receptionTime;
+    private String entityId;
+    private Date createdDate;
     private String text;
-    private String html;
 
-    public TargetFile(String itemId, String parentId, Date receptionTime, String text, String html) {
-        this.itemId = itemId;
-        this.parentId = parentId;
-        this.receptionTime = receptionTime;
+    public TargetFile(String entityId, Date createdDate, String text) {
+        this.entityId = entityId;
+        this.createdDate = createdDate;
         this.text = text;
-        this.html = html;
     }
 
-    public String getItemId() {
-        return itemId;
+    public String getEntityId() {
+        return entityId;
     }
 
-    public void setItemId(String itemId) {
-        this.itemId = itemId;
+    public void setEntityId(String entityId) {
+        this.entityId = entityId;
     }
 
-    public String getParentId() {
-        return parentId;
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
-    public void setParentId(String parentId) {
-        this.parentId = parentId;
-    }
-
-    public Date getReceptionTime() {
-        return receptionTime;
-    }
-
-    public void setReceptionTime(Date receptionTime) {
-        this.receptionTime = receptionTime;
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
     public String getText() {
@@ -50,13 +38,5 @@ public class TargetFile {
 
     public void setText(String text) {
         this.text = text;
-    }
-
-    public String getHtml() {
-        return html;
-    }
-
-    public void setHtml(String html) {
-        this.html = html;
     }
 }

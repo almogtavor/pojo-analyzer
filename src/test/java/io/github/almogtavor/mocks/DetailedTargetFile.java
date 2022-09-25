@@ -10,9 +10,7 @@ import java.util.List;
 @Generated("io.github.almogtavor.processor.DetailedPojoAnnotationProcessor")
 public class DetailedTargetFile {
     public static final List<FieldDetails> fieldDetailsList = Arrays.asList(
-            new FieldDetails<TargetFile, String>("itemId", (TargetFile t) -> t.getItemId(), (TargetFile t1, String t2) -> t1.setItemId(t2)),
-            new FieldDetails<TargetFile, String>("parentId;", (TargetFile t) -> t.getParentId(), (TargetFile t1, String t2) -> t1.setParentId(t2)),
-            new FieldDetails<TargetFile, Date>("receptionTime", (TargetFile t) -> t.getReceptionTime(), (TargetFile t1, Date t2) -> t1.setReceptionTime(t2)),
-            new FieldDetails<TargetFile, String>("text", (TargetFile t) -> t.getText(), (TargetFile t1, String t2) -> t1.setText(t2)),
-            new FieldDetails<TargetFile, String>("html", (TargetFile t) -> t.getHtml(), (TargetFile t1, String t2) -> t1.setHtml(t2)));
+            new FieldDetails<TargetFile, String>("entityId", (TargetFile t) -> t.getEntityId(), (TargetFile t1, String t2) -> t1.setEntityId(t2)),
+            new FieldDetails<TargetFile, Date>("createdDate", (TargetFile t) -> t.getCreatedDate(), (TargetFile t1, Date t2) -> t1.setCreatedDate(t2)),
+            new FieldDetails<TargetFile, String>("text", (TargetFile t) -> t.getText(), (TargetFile t1, String t2) -> t1.setText(t2)));
 }

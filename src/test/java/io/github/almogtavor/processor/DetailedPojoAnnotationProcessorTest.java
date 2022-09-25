@@ -17,42 +17,31 @@ class DetailedPojoAnnotationProcessorTest {
                                                                 "                \n" +
                                                                 "@DetailedPojo\n" +
                                                                 "public class TargetFile {\n" +
-                                                                "    private String itemId;\n" +
-                                                                "    private String parentId;\n" +
-                                                                "    private Date receptionTime;\n" +
+                                                                "    private String entityId;\n" +
+                                                                "    private Date createdDate;\n" +
                                                                 "    private String text;\n" +
                                                                 "    private String html;\n" +
                                                                 "                \n" +
-                                                                "    public TargetFile(String itemId, String parentId, Date receptionTime, String text, String html) {\n" +
-                                                                "        this.itemId = itemId;\n" +
-                                                                "        this.parentId = parentId;\n" +
-                                                                "        this.receptionTime = receptionTime;\n" +
+                                                                "    public TargetFile(String entityId, Date createdDate, String text) {\n" +
+                                                                "        this.entityId = entityId;\n" +
+                                                                "        this.createdDate = createdDate;\n" +
                                                                 "        this.text = text;\n" +
-                                                                "        this.html = html;\n" +
                                                                 "    }\n" +
                                                                 "                \n" +
-                                                                "    public String getItemId() {\n" +
-                                                                "        return itemId;\n" +
+                                                                "    public String getEntityId() {\n" +
+                                                                "        return entityId;\n" +
                                                                 "    }\n" +
                                                                 "                \n" +
-                                                                "    public void setItemId(String itemId) {\n" +
-                                                                "        this.itemId = itemId;\n" +
+                                                                "    public void setEntityId(String entityId) {\n" +
+                                                                "        this.entityId = entityId;\n" +
                                                                 "    }\n" +
                                                                 "                \n" +
-                                                                "    public String getParentId() {\n" +
-                                                                "        return parentId;\n" +
+                                                                "    public Date getCreatedDate() {\n" +
+                                                                "        return createdDate;\n" +
                                                                 "    }\n" +
                                                                 "                \n" +
-                                                                "    public void setParentId(String parentId) {\n" +
-                                                                "        this.parentId = parentId;\n" +
-                                                                "    }\n" +
-                                                                "                \n" +
-                                                                "    public Date getReceptionTime() {\n" +
-                                                                "        return receptionTime;\n" +
-                                                                "    }\n" +
-                                                                "                \n" +
-                                                                "    public void setReceptionTime(Date receptionTime) {\n" +
-                                                                "        this.receptionTime = receptionTime;\n" +
+                                                                "    public void setCreatedDate(Date createdDate) {\n" +
+                                                                "        this.createdDate = createdDate;\n" +
                                                                 "    }\n" +
                                                                 "                \n" +
                                                                 "    public String getText() {\n" +
@@ -61,14 +50,6 @@ class DetailedPojoAnnotationProcessorTest {
                                                                 "                \n" +
                                                                 "    public void setText(String text) {\n" +
                                                                 "        this.text = text;\n" +
-                                                                "    }\n" +
-                                                                "                \n" +
-                                                                "    public String getHtml() {\n" +
-                                                                "        return html;\n" +
-                                                                "    }\n" +
-                                                                "                \n" +
-                                                                "    public void setHtml(String html) {\n" +
-                                                                "        this.html = html;\n" +
                                                                 "    }\n" +
                                                                 "}";
     @Language("JAVA")
@@ -106,11 +87,9 @@ class DetailedPojoAnnotationProcessorTest {
                           "@Generated(\"io.github.almogtavor.processor.DetailedPojoAnnotationProcessor\")\n" +
                           "public class DetailedTargetFile {\n" +
                           "    public static final List<FieldDetails> fieldDetailsList = Arrays.asList(\n" +
-                          "            new FieldDetails<TargetFile, String>(\"itemId\", (TargetFile t) -> t.getItemId(), (TargetFile t1, String t2) -> t1.setItemId(t2)),\n" +
-                          "            new FieldDetails<TargetFile, String>(\"parentId\", (TargetFile t) -> t.getParentId(), (TargetFile t1, String t2) -> t1.setParentId(t2)),\n" +
-                          "            new FieldDetails<TargetFile, Date>(\"receptionTime\", (TargetFile t) -> t.getReceptionTime(), (TargetFile t1, Date t2) -> t1.setReceptionTime(t2)),\n" +
-                          "            new FieldDetails<TargetFile, String>(\"text\", (TargetFile t) -> t.getText(), (TargetFile t1, String t2) -> t1.setText(t2)),\n" +
-                          "            new FieldDetails<TargetFile, String>(\"html\", (TargetFile t) -> t.getHtml(), (TargetFile t1, String t2) -> t1.setHtml(t2)));\n" +
+                          "            new FieldDetails<TargetFile, String>(\"entityId\", (TargetFile t) -> t.getEntityId(), (TargetFile t1, String t2) -> t1.setEntityId(t2)),\n" +
+                          "            new FieldDetails<TargetFile, Date>(\"createdDate\", (TargetFile t) -> t.getCreatedDate(), (TargetFile t1, Date t2) -> t1.setCreatedDate(t2)),\n" +
+                          "            new FieldDetails<TargetFile, String>(\"text\", (TargetFile t) -> t.getText(), (TargetFile t1, String t2) -> t1.setText(t2)));\n" +
                           "}";
         CompilationSubject.assertThat(compilation)
                 .generatedSourceFile("io.github.almogtavor.mocks.DetailedTargetFile")

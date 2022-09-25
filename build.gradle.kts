@@ -1,9 +1,10 @@
 plugins {
-    `java`
+    java
+    `maven-publish`
 }
 
 group "io.github.almogtavor"
-version "0.0.1"
+version "1.0.0"
 
 repositories {
     mavenCentral()
@@ -29,4 +30,40 @@ dependencies {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            groupId = "io.github.almogtavor"
+            artifactId = "pojo-analyzer"
+            from(components["java"])
+            pom {
+                url.set("https://github.com/almogtavor/pojo-analyzer")
+                licenses {
+                    license {
+                        name.set("The Apache License, Version 2.0")
+                        url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                    }
+                }
+                developers {
+                    developer {
+                        id.set("almogtavor")
+                        name.set("Almog Tavor")
+                    }
+                }
+                scm {
+                    connection.set("scm:git:git://github.com/almogtavor/pojo-analyzer.git")
+                    developerConnection.set("scm:git:https://github.com/almogtavor/pojo-analyzer.git")
+                    url.set("https://github.com/almogtavor/pojo-analyzer/")
+                }
+            }
+            repositories {
+                maven {
+                    val releasesRepoUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+                    url = uri(releasesRepoUrl)
+                }
+            }
+        }
+    }
 }
