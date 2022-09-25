@@ -1,21 +1,14 @@
 package io.github.almogtavor.processor;
 
 import com.google.auto.service.AutoService;
-import com.google.common.base.CaseFormat;
 import com.squareup.javapoet.*;
 import io.github.almogtavor.annotations.DetailedPojo;
-import io.github.almogtavor.model.FieldDetails;
-import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Generated;
 import javax.annotation.processing.*;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
-import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
-import javax.lang.model.element.VariableElement;
 import javax.lang.model.type.TypeMirror;
-import javax.lang.model.util.ElementFilter;
 import javax.lang.model.util.Elements;
 import javax.tools.Diagnostic;
 import java.io.IOException;
@@ -29,6 +22,7 @@ public class DetailedPojoAnnotationProcessor extends AbstractProcessor {
     private Filer filer;
     private Messager messager;
     private Elements elementUtils;
+    private CodeGenerator codeGenerator;
 
     @Override
     public synchronized void init(ProcessingEnvironment processingEnv) {
@@ -36,6 +30,7 @@ public class DetailedPojoAnnotationProcessor extends AbstractProcessor {
         filer = processingEnv.getFiler();
         messager = processingEnv.getMessager();
         elementUtils = processingEnv.getElementUtils();
+        codeGenerator = new CodeGenerator();
     }
 
     /**
@@ -51,7 +46,7 @@ public class DetailedPojoAnnotationProcessor extends AbstractProcessor {
                 String packageName = elementUtils.getPackageOf(typeElementOfAnnotatedClass).getQualifiedName().toString();
                 String typeName = typeElementOfAnnotatedClass.getSimpleName().toString();
                 TypeMirror typeOfAnnotatedClass = typeElementOfAnnotatedClass.asType();
-                TypeSpec.Builder classBuilder = generateClass(typeElementOfAnnotatedClass, packageName, typeName, typeOfAnnotatedClass);
+                TypeSpec.Builder classBuilder = codeGenerator.generateDetailedPojoClass(typeElementOfAnnotatedClass, packageName, typeName, typeOfAnnotatedClass);
                 createTargetJavaFile(typeElementOfAnnotatedClass, packageName, classBuilder);
             }
         }

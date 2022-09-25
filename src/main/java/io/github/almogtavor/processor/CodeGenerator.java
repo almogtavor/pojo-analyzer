@@ -16,7 +16,7 @@ import java.util.List;
 
 public class CodeGenerator {
     @NotNull
-    public TypeSpec.Builder generateClass(Element typeElementOfAnnotatedClass, String packageName, String typeName, TypeMirror typeOfAnnotatedClass) {
+    public TypeSpec.Builder generateDetailedPojoClass(Element typeElementOfAnnotatedClass, String packageName, String typeName, TypeMirror typeOfAnnotatedClass) {
         TypeSpec.Builder classBuilder = getClassBuilder(packageName, typeName);
         classBuilder.addAnnotation(AnnotationSpec.builder(Generated.class)
                 .addMember("value", "$S", DetailedPojoAnnotationProcessor.class.getCanonicalName()).build());
