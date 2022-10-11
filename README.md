@@ -4,6 +4,13 @@ This library allows generation of a list that will contain getter, setter, and s
 This can be necessary for various use cases like iterating all fields of a POJO, manipulating fields of a POJO based on external properties and more.
 This library is different from other approaches to this problem in that it does the list generation at compile time, hence there is no performance issue.
 
+### Install
+```kotlin
+dependencies {
+  implementation("io.github.almogtavor:pojo-analyzers:1.0.0")
+}
+```
+
 ### How does it work? Using `@DetailedPojo`
 
 ```java
