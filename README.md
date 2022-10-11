@@ -11,6 +11,13 @@ dependencies {
 }
 ```
 
+### Why
+There is sometimes a need for accessing a field name in Java, as well as its value (e.g. getter) or its setter.
+The most common need for this is to enable usage of configuration properties that define actions based on POJOs' fields. 
+These questions emphasize the general requirement ([question 1](https://stackoverflow.com/questions/14944333/get-name-of-a-field), [question 2](https://stackoverflow.com/questions/13400075/reflection-generic-get-field-value)).
+Lombok does a great job providing `@FieldNameConstants`. But this is not enough, since `@FieldNameConstants` generates the name of the field, but not an acces to its getter nor setter. Therefore there is no way of interacting with the field after accessing its name.
+Another requirement that gets solves by `pojo-analyzer` is the need for iteration of all POJO's fields. These questions emphasize this ([question 1](https://stackoverflow.com/questions/17095628/loop-over-all-fields-in-a-java-class), [question 2](https://stackoverflow.com/questions/3333974/how-to-loop-over-a-class-attributes-in-java)).
+
 ### How does it work? Using `@DetailedPojo`
 
 ```java
