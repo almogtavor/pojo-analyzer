@@ -1,6 +1,6 @@
 package io.github.almogtavor.mocks;
 
-import io.github.almogtavor.model.FieldDetails;
+import io.github.almogtavor.pojo.analyzer.model.FieldDetails;
 
 import javax.annotation.Generated;
 import java.util.Arrays;

@@ -1,11 +1,13 @@
-package io.github.almogtavor.model;
+package io.github.almogtavor.pojo.analyzer.model;
 
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 
-// TODO: change the name of this class to ObjectFieldDetails
-//  And create an XFieldDetails for every common type, so ObjectFieldDetails
-//  will only be used as a last resort. Make sure all others implements a FieldDetails interface
+/**
+ * The FieldDetails class adds access to the getter, setter, and String name of a field, at compile time.
+ * @param <ClassTypeT> The type of the class that the field belongs to.
+ * @param <FieldTypeT> The type of the field that the details are based on
+ */
 public class FieldDetails<ClassTypeT, FieldTypeT> {
     private String fieldName;
     private Function<ClassTypeT, FieldTypeT> fieldGetter;

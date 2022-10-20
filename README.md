@@ -1,8 +1,9 @@
 # Pojo Analyzer
 
 This library allows generation of a list that will contain getter, setter, and string name for each field of a POJO.
-This can be necessary for various use cases like iterating all fields of a POJO, manipulating fields of a POJO based on external properties and more.
-This library is different from other approaches to this problem in that it does the list generation at compile time, hence there is no performance issue.
+This can be necessary for various use cases like iterating all fields of a POJO, manipulating fields of a POJO based on
+external properties and more. This library is different from other approaches to this problem in that it does the list
+generation at compile time, hence there is no performance issue.
 
 ### Install
 ```kotlin
@@ -21,8 +22,10 @@ Another requirement that gets solves by `pojo-analyzer` is the need for iteratio
 ### How does it work? Using `@DetailedPojo`
 
 ```java
-import io.github.almogtavor.annotations.DetailedPojo;
+import io.github.almogtavor.pojo.analyzer.annotations.DetailedPojo;
+
 import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -39,24 +42,58 @@ public class TargetPojo {
 Causes Pojo Analyzer to generate:
 
 ```java
-import io.github.almogtavor.model.FieldDetails;
+import io.github.almogtavor.pojo.analyzer.model.FieldDetails;
+
 import javax.annotation.processing.Generated;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-@Generated("io.github.almogtavor.processor.DetailedPojoAnnotationProcessor")
+@Generated("io.github.almogtavor.pojo.analyzer.processor.DetailedPojoAnnotationProcessor")
+public class DetailedTargetPojo {
+    public static final Map<String, FieldDetails> fieldDetailsMap = new HashMap<String, FieldDetails>() {{
+        put("entityId", new FieldDetails<TargetFile, String>("entityId", (TargetFile t) -> t.getEntityId(), (TargetFile t1, String t2) -> t1.setEntityId(t2)));
+        put("createdDate", new FieldDetails<TargetFile, Date>("createdDate", (TargetFile t) -> t.getCreatedDate(), (TargetFile t1, Date t2) -> t1.setCreatedDate(t2)));
+        put("text", new FieldDetails<TargetFile, String>("text", (TargetFile t) -> t.getText(), (TargetFile t1, String t2) -> t1.setText(t2)));
+    }};
+}
+```
+
+Or if we'll specify:
+```java
+import io.github.almogtavor.pojo.analyzer.model.VariableType;
+        
+@DetailedPojo(variableType = VariableType.LIST)
+public class TargetPojo {
+    private String entityId;
+    private Date createdDate;
+    private String text;
+}
+```
+We will get a generated list:
+
+```java
+import io.github.almogtavor.pojo.analyzer.model.FieldDetails;
+
+import javax.annotation.processing.Generated;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+
+@Generated("io.github.almogtavor.pojo.analyzer.processor.DetailedPojoAnnotationProcessor")
 public class DetailedTargetPojo {
     public static final List<FieldDetails> fieldDetailsList = Arrays.asList(
-            new FieldDetails<TargetFile, String>("entityId", (TargetFile t) -> t.getEntityId(), 
+            new FieldDetails<TargetFile, String>("entityId", (TargetFile t) -> t.getEntityId(),
                     (TargetFile t1, String t2) -> t1.seEntityId(t2)),
-            new FieldDetails<TargetFile, Date>("createdDate", (TargetFile t) -> t.getCreatedDate(), 
+            new FieldDetails<TargetFile, Date>("createdDate", (TargetFile t) -> t.getCreatedDate(),
                     (TargetFile t1, Date t2) -> t1.setCreatedDate(t2)),
-            new FieldDetails<TargetFile, String>("text", (TargetFile t) -> t.getText(), 
+            new FieldDetails<TargetFile, String>("text", (TargetFile t) -> t.getText(),
                     (TargetFile t1, String t2) -> t1.setText(t2)));
 }
 ```
+
 And now we can easily access the getter, setter and name of each field, since the `FieldDetails` class looks like this:
+
 ```java
 import lombok.Data;
 
@@ -68,7 +105,18 @@ public class FieldDetails<ClassTypeT, FieldTypeT> {
 }
 ```
 
+We can also easily perform iteration over all fields of a class.
+For example:
+```java
+class MyClass {
+    void iterateClasses() {
+        DetailedTargetPojo.fieldDetailsList.stream().forEach(System.out::println);
+    }
+}
+```
+
 ### Requirements
+
 The project has been compiled with JDK 1.8 for wider compatibility.
 
 ### Limitations

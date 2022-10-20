@@ -1,6 +1,6 @@
 package io.github.almogtavor.mocks;
 
-import io.github.almogtavor.annotations.DetailedPojo;
+import io.github.almogtavor.pojo.analyzer.annotations.DetailedPojo;
 
 import java.util.Date;
 

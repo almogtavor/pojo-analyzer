@@ -1,8 +1,8 @@
-package io.github.almogtavor.processor;
+package io.github.almogtavor.pojo.analyzer.processor;
 
 import com.google.auto.service.AutoService;
 import com.squareup.javapoet.*;
-import io.github.almogtavor.annotations.DetailedPojo;
+import io.github.almogtavor.pojo.analyzer.annotations.DetailedPojo;
 
 import javax.annotation.processing.*;
 import javax.lang.model.SourceVersion;

@@ -1,10 +1,11 @@
 plugins {
     java
     `maven-publish`
+    signing
 }
 
-group "io.github.almogtavor"
-version "1.0.0"
+group = "io.github.almogtavor"
+version = "1.0.0"
 
 repositories {
     mavenCentral()
@@ -32,13 +33,24 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+val sonatypeUsername: String by project
+val sonatypePassword: String by project
+
 publishing {
     publications {
         create<MavenPublication>("mavenJava") {
-            groupId = "io.github.almogtavor"
-            artifactId = "pojo-analyzer"
+            groupId = project.group as String?
+            artifactId = project.name
+            version = project.version as String?
             from(components["java"])
             pom {
+                name.set("POJO Analyzer")
+                description.set("A library for generating details of POJOs at compile time")
                 url.set("https://github.com/almogtavor/pojo-analyzer")
                 licenses {
                     license {
@@ -62,8 +74,22 @@ publishing {
                 maven {
                     val releasesRepoUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
                     url = uri(releasesRepoUrl)
+                    credentials {
+                        username = sonatypeUsername
+                        password = sonatypePassword
+                    }
                 }
             }
         }
     }
+}
+
+tasks.javadoc {
+    if (JavaVersion.current().isJava9Compatible) {
+        (options as StandardJavadocDocletOptions).addBooleanOption("html5", true)
+    }
+}
+
+signing {
+    sign(publishing.publications["mavenJava"])
 }

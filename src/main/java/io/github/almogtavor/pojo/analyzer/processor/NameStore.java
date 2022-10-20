@@ -1,4 +1,4 @@
-package io.github.almogtavor.processor;
+package io.github.almogtavor.pojo.analyzer.processor;
 
 public final class NameStore {
 
@@ -26,5 +26,6 @@ public final class NameStore {
 
         private Variable() { throw new IllegalStateException(UTILITY_CLASS); }
         public static final String FIELD_DETAILS_LIST_NAME = "fieldDetailsList";
+        public static final String FIELD_DETAILS_MAP_NAME = "fieldDetailsMap";
     }
 }
