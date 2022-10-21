@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "io.github.almogtavor"
-version = "1.0.0"
+version = "1.1.0"
 
 repositories {
     mavenCentral()
@@ -18,7 +18,7 @@ dependencies {
     annotationProcessor("com.google.auto.service:auto-service:${autoServiceVersion}")
     implementation("com.squareup:javapoet:1.13.0")
     implementation("com.fasterxml.jackson.core:jackson-core:2.13.4")
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.13.4")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.13.4.2")
     implementation("org.jetbrains:annotations:23.0.0")
     implementation("com.google.guava:guava:31.1-jre")
     implementation("com.sun.codemodel:codemodel:2.6")
