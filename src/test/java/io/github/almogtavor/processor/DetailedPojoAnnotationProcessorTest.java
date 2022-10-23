@@ -4,6 +4,7 @@ import com.google.testing.compile.Compilation;
 import com.google.testing.compile.CompilationSubject;
 import com.google.testing.compile.Compiler;
 import com.google.testing.compile.JavaFileObjects;
+import io.github.almogtavor.mocks.DetailedTargetFile;
 import io.github.almogtavor.pojo.analyzer.processor.DetailedPojoAnnotationProcessor;
 import org.intellij.lang.annotations.Language;
 import org.junit.jupiter.api.Test;

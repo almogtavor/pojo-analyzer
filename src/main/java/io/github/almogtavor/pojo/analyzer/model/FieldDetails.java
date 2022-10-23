@@ -9,9 +9,9 @@ import java.util.function.Function;
  * @param <FieldTypeT> The type of the field that the details are based on
  */
 public class FieldDetails<ClassTypeT, FieldTypeT> {
-    private String fieldName;
-    private Function<ClassTypeT, FieldTypeT> fieldGetter;
-    private BiConsumer<ClassTypeT, FieldTypeT> fieldSetter;
+    private final String fieldName;
+    private final Function<ClassTypeT, FieldTypeT> fieldGetter;
+    private final BiConsumer<ClassTypeT, FieldTypeT> fieldSetter;
 
     public FieldDetails(String fieldName, Function<ClassTypeT, FieldTypeT> fieldGetter, BiConsumer<ClassTypeT, FieldTypeT> fieldSetter) {
         this.fieldName = fieldName;
@@ -23,23 +23,15 @@ public class FieldDetails<ClassTypeT, FieldTypeT> {
         return fieldName;
     }
 
-    public void setFieldName(String fieldName) {
-        this.fieldName = fieldName;
-    }
-
     public Function<ClassTypeT, FieldTypeT> getFieldGetter() {
         return fieldGetter;
-    }
-
-    public void setFieldGetter(Function<ClassTypeT, FieldTypeT> fieldGetter) {
-        this.fieldGetter = fieldGetter;
     }
 
     public BiConsumer<ClassTypeT, FieldTypeT> getFieldSetter() {
         return fieldSetter;
     }
 
-    public void setFieldSetter(BiConsumer<ClassTypeT, FieldTypeT> fieldSetter) {
-        this.fieldSetter = fieldSetter;
+    public FieldTypeT getFieldValue(ClassTypeT clazz) {
+        return getFieldGetter().apply(clazz);
     }
 }
