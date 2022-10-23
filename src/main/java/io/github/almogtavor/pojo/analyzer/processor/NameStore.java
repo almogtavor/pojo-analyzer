@@ -25,7 +25,7 @@ public final class NameStore {
     public static class Variable {
 
         private Variable() { throw new IllegalStateException(UTILITY_CLASS); }
-        public static final String FIELD_DETAILS_LIST_NAME = "fieldDetailsList";
-        public static final String FIELD_DETAILS_MAP_NAME = "fieldDetailsMap";
+        public static final String FIELD_DETAILS_LIST_NAME = "list";
+        public static final String FIELD_DETAILS_MAP_NAME = "map";
     }
 }

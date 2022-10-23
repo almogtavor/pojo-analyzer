@@ -142,7 +142,7 @@ class DetailedPojoAnnotationProcessorTest {
                           "               \n" +
                           "@Generated(\"io.github.almogtavor.pojo.analyzer.processor.DetailedPojoAnnotationProcessor\")\n" +
                           "public class DetailedTargetFile {\n" +
-                          "    public static final List<FieldDetails> fieldDetailsList = Arrays.asList(\n" +
+                          "    public static final List<FieldDetails> list = Arrays.asList(\n" +
                           "            new FieldDetails<TargetFile, String>(\"entityId\", (TargetFile t) -> t.getEntityId(), (TargetFile t1, String t2) -> t1.setEntityId(t2)),\n" +
                           "            new FieldDetails<TargetFile, Date>(\"createdDate\", (TargetFile t) -> t.getCreatedDate(), (TargetFile t1, Date t2) -> t1.setCreatedDate(t2)),\n" +
                           "            new FieldDetails<TargetFile, String>(\"text\", (TargetFile t) -> t.getText(), (TargetFile t1, String t2) -> t1.setText(t2)));\n" +
@@ -167,7 +167,7 @@ class DetailedPojoAnnotationProcessorTest {
                           "                    \n" +
                           "@Generated(\"io.github.almogtavor.pojo.analyzer.processor.DetailedPojoAnnotationProcessor\")\n" +
                           "public class DetailedTargetFile {\n" +
-                          "    public static final List<FieldDetails> fieldDetailsList = Arrays.asList();\n" +
+                          "    public static final List<FieldDetails> list = Arrays.asList();\n" +
                           "}";
         CompilationSubject.assertThat(compilation)
                 .generatedSourceFile("io.github.almogtavor.mocks.DetailedTargetFile")
@@ -190,7 +190,7 @@ class DetailedPojoAnnotationProcessorTest {
                           "                    \n" +
                           "@Generated(\"io.github.almogtavor.pojo.analyzer.processor.DetailedPojoAnnotationProcessor\")\n" +
                           "public class DetailedTargetFile {\n" +
-                          "    public static final Map<String, FieldDetails> fieldDetailsMap = new HashMap<String, FieldDetails>() {{}};\n" +
+                          "    public static final Map<String, FieldDetails> map = new HashMap<String, FieldDetails>() {{}};\n" +
                           "}";
         CompilationSubject.assertThat(compilation)
                 .generatedSourceFile("io.github.almogtavor.mocks.DetailedTargetFile")
@@ -214,7 +214,7 @@ class DetailedPojoAnnotationProcessorTest {
                           "                    \n" +
                           "@Generated(\"io.github.almogtavor.pojo.analyzer.processor.DetailedPojoAnnotationProcessor\")\n" +
                           "public class DetailedTargetFile {\n" +
-                          "    public static final Map<String, FieldDetails> fieldDetailsMap = new HashMap<String, FieldDetails>() {{\n" +
+                          "    public static final Map<String, FieldDetails> map = new HashMap<String, FieldDetails>() {{\n" +
                           "        put(\"entityId\", new FieldDetails<TargetFile, String>(\"entityId\", (TargetFile t) -> t.getEntityId(), (TargetFile t1, String t2) -> t1.setEntityId(t2)));\n" +
                           "        put(\"createdDate\", new FieldDetails<TargetFile, Date>(\"createdDate\", (TargetFile t) -> t.getCreatedDate(), (TargetFile t1, Date t2) -> t1.setCreatedDate(t2)));\n" +
                           "        put(\"text\", new FieldDetails<TargetFile, String>(\"text\", (TargetFile t) -> t.getText(), (TargetFile t1, String t2) -> t1.setText(t2)));\n" +

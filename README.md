@@ -8,7 +8,7 @@ generation at compile time, hence there is no performance issue.
 ### Install
 ```kotlin
 dependencies {
-  implementation("io.github.almogtavor:pojo-analyzers:1.2.0")
+  implementation("io.github.almogtavor:pojo-analyzers:1.3.0")
 }
 ```
 
@@ -51,7 +51,7 @@ import java.util.List;
 
 @Generated("io.github.almogtavor.pojo.analyzer.processor.DetailedPojoAnnotationProcessor")
 public class DetailedTargetPojo {
-    public static final Map<String, FieldDetails> fieldDetailsMap = new HashMap<String, FieldDetails>() {{
+    public static final Map<String, FieldDetails> map = new HashMap<String, FieldDetails>() {{
         put("entityId", new FieldDetails<TargetPojo, String>("entityId", (TargetPojo t) -> t.getEntityId(), (TargetPojo t1, String t2) -> t1.setEntityId(t2)));
         put("createdDate", new FieldDetails<TargetPojo, Date>("createdDate", (TargetPojo t) -> t.getCreatedDate(), (TargetPojo t1, Date t2) -> t1.setCreatedDate(t2)));
         put("text", new FieldDetails<TargetPojo, String>("text", (TargetPojo t) -> t.getText(), (TargetPojo t1, String t2) -> t1.setText(t2)));
@@ -62,7 +62,7 @@ public class DetailedTargetPojo {
 So we can use it as following:
 ```java
 TargetPojo targetPojo = new TargetPojo("123", new Date(), "pojo-analyzer");
-FieldDetails<TargetPojo, String> entityIdField = DetailedTargetPojo.fieldDetailsMap.get("entityId");
+FieldDetails<TargetPojo, String> entityIdField = DetailedTargetPojo.map.get("entityId");
 entityIdField.getFieldValue(targetPojo); // "123"
 ```
 
@@ -89,7 +89,7 @@ import java.util.List;
 
 @Generated("io.github.almogtavor.pojo.analyzer.processor.DetailedPojoAnnotationProcessor")
 public class DetailedTargetPojo {
-    public static final List<FieldDetails> fieldDetailsList = Arrays.asList(
+    public static final List<FieldDetails> list = Arrays.asList(
             new FieldDetails<TargetPojo, String>("entityId", (TargetPojo t) -> t.getEntityId(),
                     (TargetPojo t1, String t2) -> t1.seEntityId(t2)),
             new FieldDetails<TargetPojo, Date>("createdDate", (TargetPojo t) -> t.getCreatedDate(),
@@ -117,7 +117,7 @@ For example:
 ```java
 class MyClass {
     void iterateClasses() {
-        DetailedTargetPojo.fieldDetailsList.stream().forEach(System.out::println);
+        DetailedTargetPojo.list.stream().forEach(System.out::println);
     }
 }
 ```
