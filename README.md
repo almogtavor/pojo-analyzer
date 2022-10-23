@@ -52,14 +52,21 @@ import java.util.List;
 @Generated("io.github.almogtavor.pojo.analyzer.processor.DetailedPojoAnnotationProcessor")
 public class DetailedTargetPojo {
     public static final Map<String, FieldDetails> fieldDetailsMap = new HashMap<String, FieldDetails>() {{
-        put("entityId", new FieldDetails<TargetFile, String>("entityId", (TargetFile t) -> t.getEntityId(), (TargetFile t1, String t2) -> t1.setEntityId(t2)));
-        put("createdDate", new FieldDetails<TargetFile, Date>("createdDate", (TargetFile t) -> t.getCreatedDate(), (TargetFile t1, Date t2) -> t1.setCreatedDate(t2)));
-        put("text", new FieldDetails<TargetFile, String>("text", (TargetFile t) -> t.getText(), (TargetFile t1, String t2) -> t1.setText(t2)));
+        put("entityId", new FieldDetails<TargetPojo, String>("entityId", (TargetPojo t) -> t.getEntityId(), (TargetPojo t1, String t2) -> t1.setEntityId(t2)));
+        put("createdDate", new FieldDetails<TargetPojo, Date>("createdDate", (TargetPojo t) -> t.getCreatedDate(), (TargetPojo t1, Date t2) -> t1.setCreatedDate(t2)));
+        put("text", new FieldDetails<TargetPojo, String>("text", (TargetPojo t) -> t.getText(), (TargetPojo t1, String t2) -> t1.setText(t2)));
     }};
 }
 ```
 
-Or if we'll specify:
+So we can use it as following:
+```java
+TargetPojo targetPojo = new TargetPojo("123", new Date(), "pojo-analyzer");
+FieldDetails<TargetPojo, String> entityIdField = DetailedTargetPojo.fieldDetailsMap.get("entityId");
+entityIdField.getFieldValue(targetPojo); // "123"
+```
+
+We can also specify:
 ```java
 import io.github.almogtavor.pojo.analyzer.model.VariableType;
         
@@ -70,7 +77,7 @@ public class TargetPojo {
     private String text;
 }
 ```
-We will get a generated list:
+So we will get a generated list:
 
 ```java
 import io.github.almogtavor.pojo.analyzer.model.FieldDetails;
@@ -83,12 +90,12 @@ import java.util.List;
 @Generated("io.github.almogtavor.pojo.analyzer.processor.DetailedPojoAnnotationProcessor")
 public class DetailedTargetPojo {
     public static final List<FieldDetails> fieldDetailsList = Arrays.asList(
-            new FieldDetails<TargetFile, String>("entityId", (TargetFile t) -> t.getEntityId(),
-                    (TargetFile t1, String t2) -> t1.seEntityId(t2)),
-            new FieldDetails<TargetFile, Date>("createdDate", (TargetFile t) -> t.getCreatedDate(),
-                    (TargetFile t1, Date t2) -> t1.setCreatedDate(t2)),
-            new FieldDetails<TargetFile, String>("text", (TargetFile t) -> t.getText(),
-                    (TargetFile t1, String t2) -> t1.setText(t2)));
+            new FieldDetails<TargetPojo, String>("entityId", (TargetPojo t) -> t.getEntityId(),
+                    (TargetPojo t1, String t2) -> t1.seEntityId(t2)),
+            new FieldDetails<TargetPojo, Date>("createdDate", (TargetPojo t) -> t.getCreatedDate(),
+                    (TargetPojo t1, Date t2) -> t1.setCreatedDate(t2)),
+            new FieldDetails<TargetPojo, String>("text", (TargetPojo t) -> t.getText(),
+                    (TargetPojo t1, String t2) -> t1.setText(t2)));
 }
 ```
 
