@@ -8,7 +8,7 @@ generation at compile time, hence there is no performance issue.
 ### Install
 ```kotlin
 dependencies {
-  implementation("io.github.almogtavor:pojo-analyzers:1.3.0")
+  compileOnly("io.github.almogtavor:pojo-analyzers:1.3.0")
   annotationProcessor("io.github.almogtavor:pojo-analyzers:1.3.0")
 }
 ```
