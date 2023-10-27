@@ -1,11 +1,18 @@
 # Pojo Analyzer
 
-This library allows generation of a list that will contain a getter, setter, and string name for each field of a POJO.
-This can be necessary for various use cases like iterating all fields of a POJO, manipulating fields of a POJO based on
-external properties, and more. This library is different from other approaches to this problem in that it does the list
-generation at compile time, hence there is no performance issue.
+Pojo Analyzer is a Java library designed to generate a list or a map containing getters, setters, and string names for each field of a Plain Old Java Object (POJO). 
+It performs this generation at compile time, providing a performance-optimized solution for various use-cases like iterating over all fields of a POJO, and manipulating those fields based on external properties.
 
-### Install
+## Table of Contents
+- [Installation](#installation)
+- [Why Use Pojo Analyzer?](#why-use-pojo-analyzer)
+- [How does it work?](#how-does-it-work-using-detailedpojo)
+- [Requirements](#requirements)
+- [Limitations](#limitations)
+
+---
+
+## Installation
 ```kotlin
 dependencies {
   compileOnly("io.github.almogtavor:pojo-analyzers:1.3.0")
@@ -13,14 +20,23 @@ dependencies {
 }
 ```
 
-### Why
-There is sometimes a need for accessing a field name in Java, as well as its value (e.g. getter) or its setter.
-The most common need for this is to enable the usage of configuration properties that define actions based on POJOs' fields. 
+---
+
+## Why Use Pojo Analyzer?
+
+- **Field Name Access:** Accessing a field's name as well as its getter and setter is sometimes necessary, especially for configuration properties that define actions based on POJOs' fields.
+  
+- **Iteration Over Fields:** The library simplifies the process of iterating over all fields in a POJO, which is a frequent requirement.
+  
+- **Performance:** Pojo Analyzer operates at compile-time, avoiding any runtime performance costs, which is usually how this problem gets solved.
+
 These questions emphasize the general requirement ([question 1](https://stackoverflow.com/questions/14944333/get-name-of-a-field), [question 2](https://stackoverflow.com/questions/13400075/reflection-generic-get-field-value)).
 Lombok does a great job providing `@FieldNameConstants`. But this is not enough, since `@FieldNameConstants` generates the name of the field, but not an acces to its getter nor setter. Therefore there is no way of interacting with the field after accessing its name.
 Another requirement that gets solved by `pojo-analyzer` is the need for iteration of all POJO's fields. These questions emphasize this ([question 1](https://stackoverflow.com/questions/17095628/loop-over-all-fields-in-a-java-class), [question 2](https://stackoverflow.com/questions/3333974/how-to-loop-over-a-class-attributes-in-java)).
 
-### How does it work? Using `@DetailedPojo`
+---
+
+## How does it work? Using `@DetailedPojo`
 
 ```java
 import io.github.almogtavor.pojo.analyzer.annotations.DetailedPojo;
@@ -123,9 +139,11 @@ class MyClass {
 }
 ```
 
-### Requirements
+## Requirements
 
 The project has been compiled with JDK 1.8 for wider compatibility.
 
-### Limitations
+---
+
+## Limitations
 Currently, there is no support for primitive types which will cause a runtime exception.
