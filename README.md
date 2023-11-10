@@ -15,7 +15,7 @@ It performs this generation at compile time, providing a performance-optimized s
 ## Installation
 ```kotlin
 dependencies {
-  compileOnly("io.github.almogtavor:pojo-analyzers:1.3.0")
+  implemenetation("io.github.almogtavor:pojo-analyzers:1.3.0")
   annotationProcessor("io.github.almogtavor:pojo-analyzers:1.3.0")
 }
 ```
