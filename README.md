@@ -1,3 +1,5 @@
+<img align="right" width="250" height="250" src="logo.png">
+
 # Pojo Analyzer
 
 Pojo Analyzer is a Java library designed to generate a list or a map containing getters, setters, and string names for each field of a Plain Old Java Object (POJO). 
